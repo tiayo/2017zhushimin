@@ -17,89 +17,52 @@
         <div class="col-sm-12">
             <section class="panel">
                 <header class="panel-heading">
-                    最新订单
-                    <span class="tools pull-right">
-                            <a href="javascript:;" class="fa fa-chevron-down"></a>
-                            <a href="javascript:;" class="fa fa-times"></a>
-                         </span>
+                    服务状态
                 </header>
                 <div class="panel-body">
-                    <section id="unseen">
-                        <table class="table table-bordered table-striped table-condensed">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>用户</th>
-                                <th>商品</th>
-                                <th>地址</th>
-                                <th>电话</th>
-                                <th>价格</th>
-                                <th>寄送方式</th>
-                                <th>运送编号</th>
-                                <th>订单状态</th>
-                                <th>更新时间</th>
-                                <th>创建时间</th>
-                            </tr>
-                            </thead>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">操作系统</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="Ubuntu 16.04 LTS" disabled>
+                            </div>
+                        </div>
 
-                            <tbody id="target">
-                            @foreach($orders as $list)
-                                <tr>
-                                    <td>{{ $list['id'] }}</td>
-                                    <td>{{ $list->user->name }}</td>
-                                    <td>
-                                        @foreach($list->orderDetail as $list_detail)
-                                            {{ $list_detail->commodity->name }} <br>
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $list['address'] }}</td>
-                                    <td>{{ $list['phone'] }}</td>
-                                    <td>￥{{ $list['price'] }}</td>
-                                    <td>{{ config('site.order_type')[$list['type']] }}</td>
-                                    <td>{{ $list['tracking'] }}</td>
-                                    <td style="color: red">
-                                        {{ config('site.order_status')[$list['status']] }}
-                                    </td>
-                                    <td>{{ $list['updated_at'] }}</td>
-                                    <td>{{ $list['created_at'] }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </section>
-                </div>
-            </section>
-            <section class="panel">
-                <header class="panel-heading">
-                    最新会员
-                    <span class="tools pull-right">
-                            <a href="javascript:;" class="fa fa-chevron-down"></a>
-                            <a href="javascript:;" class="fa fa-times"></a>
-                         </span>
-                </header>
-                <div class="panel-body">
-                    <section id="unseen">
-                        <table class="table table-bordered table-striped table-condensed">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>姓名</th>
-                                <th>email</th>
-                                <th>注册时间</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($lists as $list)
-                                    <tr>
-                                        <td>{{ $list['id'] }}</td>
-                                        <td>{{ $list['name'] }}</td>
-                                        <td>{{ $list['email'] }}</td>
-                                        <td>{{ $list['created_at'] }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </section>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">服务器时间</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="{{ date('Y-m-d H:i:s') }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">PHP版本</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="PHP7.1" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">框架</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="Laravel 5.5" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">Composer版本</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="1.3.2" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">访问ip</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="{{ Request::getClientIp() }}" disabled>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </section>
         </div>
