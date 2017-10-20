@@ -153,7 +153,7 @@
             <div class="all-price">
                 <span>总价：￥<em>{{ $total_price }}</em></span>
                 <a href="/" class="jixugouwu">继续购物</a>
-                <button class="tijiao" onclick="location='{{ route('home.order_add') }}'">提交订单</button>
+                <button class="tijiao" type="button" onclick="location='{{ route('home.order_add') }}'">提交订单</button>
             </div>
         </div>
     </form>

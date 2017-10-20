@@ -35,9 +35,12 @@ class OrderController extends Controller
     public function addView()
     {
         $cars = $this->car->get();
+        
+        $total_price = $this->car->total_price($cars);
 
         return view('home.order.add', [
             'cars' => $cars,
+            'total_price' => $total_price
         ]);
     }
 
