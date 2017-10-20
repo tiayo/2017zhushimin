@@ -1,6 +1,6 @@
 @extends('home.layouts.app')
 
-@section('title', '登录')
+@section('title', '注册')
 
 @section('style')
     <style type="text/css">
@@ -52,22 +52,34 @@
 
 @section('body')
     @include('home.layouts.header')
-    <form class="login" method="post" action="{{ route('home.login') }}">
+    <form class="login" method="post" action="{{ route('home.register') }}">
         {{ csrf_field() }}
         <div class="content">
-            <h1>欢迎登录</h1>
+            <h1>注册</h1>
             <div class="login-detial">
                 <div class="form-input">
-                    <input type="email" name="email" placeholder="请输入邮箱"/>
+                    <input type="email" name="email" placeholder="请输入邮箱" required/>
                 </div>
                 <div class="form-input">
-                    <input type="password" name="password" placeholder="请输入密码"/>
+                    <input type="password" name="password" placeholder="请输入密码" required/>
+                </div>
+                <div class="form-input">
+                    <input type="password" name="password_confirmation" placeholder="请再次输入密码密码" required/>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="name" placeholder="请输入用户名" required/>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="phone" placeholder="请输入电话号码"/>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="address" placeholder="请输入您的收货地址"/>
                 </div>
                 <div class="login-btn">
-                    <button>登录</button>
+                    <button>注册</button>
                 </div>
             </div>
-            <a href="{{ route('home.register') }}" class="registration">还没有账号？点击注册</a>
+            <a href="{{ route('home.login') }}" class="registration">已经有账号？点击登录</a>
         </div>
     </form>
 @endsection
