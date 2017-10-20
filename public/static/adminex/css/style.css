@@ -10,7 +10,6 @@ Author: ThemeBucket
 @import url('../fonts/css/font-awesome.min.css');
 
 body {
-    background: #424f63;
     font-family: 'Open Sans', sans-serif;
     color: #7a7676;
     line-height: 20px;
@@ -24,7 +23,7 @@ input, select, textarea {
 }
 
 a {
-    color: #65CEA7;
+    color: #666;
 }
 
 a:focus, a:active, a:hover {
@@ -52,7 +51,7 @@ hr {
 -------------------------------*/
 
 .login-body {
-    background: #65cea7 url("../images/login-bg.jpg") no-repeat fixed;
+    background: #65cea7 url(../images/login-bg.jpg) no-repeat fixed;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -61,7 +60,6 @@ hr {
 .form-signin {
     max-width: 330px;
     margin: 100px auto;
-    background: #fff;
     border-radius: 5px;
     -webkit-border-radius: 5px;
 }
@@ -166,7 +164,7 @@ hr {
 }
 
 .login-wrap {
-    padding: 20px;
+    padding: 39% 0 0 0;
     position: relative;
 }
 
@@ -290,7 +288,7 @@ hr {
 }
 
 .custom-nav > li > a {
-    color: #fff;
+    color: #000;
     padding: 12px 20px;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -298,52 +296,21 @@ hr {
 
 .custom-nav > li > a:hover,
 .custom-nav > li > a:active {
-    background-color: #353f4f;
-    color: #65cea7;
+    background-color: #666;
+    color: #fff;
     border-radius: 0;
     -webkit-border-radius: 0;
-}
-
-.custom-nav > li.menu-list > a {
-    background: transparent url(../images/plus-white.png) no-repeat 93% center;
-}
-
-.custom-nav > li.menu-list > a:hover {
-    background-color: #353f4f;
-    background-image: url(../images/plus.png);
-}
-
-.custom-nav > li.nav-active > a {
-    background-color: #353f4f;
-    background-image: url(../images/minus.png);
-    color: #65cea7;
 }
 
 .custom-nav > li.nav-active > ul{
     display: block;
 }
 
-.custom-nav > li.nav-active > a:hover {
-    background-image: url(../images/minus.png);
-}
-
 .custom-nav > li.active > a,
 .custom-nav > li.active > a:hover,
 .custom-nav > li.active > a:focus {
-    background-color: #353f4f;
-    color: #65cea7;
-}
-
-.custom-nav > li.menu-list.active > a {
-    background-image: url(../images/plus.png);
-}
-
-.custom-nav > li.nav-active.active > a {
-    background-image: url(../images/minus.png);
-}
-
-.custom-nav > li.nav-active.active > a:hover {
-    background-image: url(../images/minus.png);
+    background: url(/style/home/images/base.png) repeat-x;
+    color: #fff;
 }
 
 .custom-nav li .fa {
@@ -359,11 +326,10 @@ hr {
     display: none;
     margin: 0;
     padding: 0;
-    background: #353f4f;
 }
 
 .custom-nav .sub-menu-list > li > a {
-    color: #fff;
+    color: #000;
     font-size: 13px;
     display: block;
     padding: 10px 5px 10px 50px;
@@ -376,8 +342,8 @@ hr {
 .custom-nav .sub-menu-list > li > a:active,
 .custom-nav .sub-menu-list > li > a:focus {
     text-decoration: none;
-    color: #65cea7;
-    background: #2a323f;
+    color: #fff;
+    background: #999999;
 }
 
 .custom-nav .sub-menu-list > li .fa {
@@ -390,8 +356,8 @@ hr {
 }
 
 .custom-nav .sub-menu-list > li.active > a {
-    color: #65CEA7;
-    background-color: #2A323F;
+    color: #fff;
+    background-color: #999999;
 }
 
 .custom-nav .sub-menu-list ul {
@@ -624,7 +590,7 @@ h5.left-nav-title {
 .notification-menu .dropdown-toggle:active,
 .notification-menu .dropdown-toggle.active,
 .notification-menu .open .dropdown-toggle.dropdown-toggle {
-    background: #424f63;
+    background: #700101;
     color: #65cea7;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -692,7 +658,7 @@ h5.left-nav-title {
 }
 
 .notification-menu .dropdown-menu li a:hover {
-    background: #2a323f;
+    background: #999999;
     color: #fff;
 }
 
@@ -845,8 +811,6 @@ h5.left-nav-title {
     left: 0;
     width: 240px;
     z-index: 100;
-    background: #424f63;
-
 }
 
 .sticky-header .left-side {
@@ -856,17 +820,8 @@ h5.left-nav-title {
 .sticky-header .header-section {
     position: fixed;
     top: 0;
-    left: 240px;
     width: 100%;
     z-index: 100;
-}
-
-.sticky-header .main-content {
-    padding-top: 50px;
-}
-
-.sticky-header .menu-right {
-    margin-right: 255px;
 }
 
 .sticky-header.left-side-collapsed .header-section {
@@ -951,7 +906,7 @@ h5.left-nav-title {
 
 .boxed-view .container {
     position: relative;
-    background: #424f63;
+    background: #700101;
     padding: 0;
 }
 
@@ -1217,7 +1172,7 @@ footer.sticky-footer {
 
 .panel.deep-purple-box {
     background: #49586e;
-    box-shadow: 0 5px 0 #424f63;
+    box-shadow: 0 5px 0 #700101;
     color: #fff;
 }
 
@@ -2970,14 +2925,14 @@ div.tagsinput span.tag a {
 .pricing-head {
     position: relative;
     height: 170px;
-    color: #2a323f;
+    color: #999999;
 }
 
 .pricing-head h1 {
     font-size: 24px;
     font-weight: 300;
     padding-top: 30px;
-    color: #2a323f;
+    color: #999999;
     text-transform: uppercase;
 }
 
@@ -3106,7 +3061,7 @@ div.tagsinput span.tag a {
 .corporate-id {
     font-weight: bold;
     font-size: 16px;
-    color: #2a323f;
+    color: #999999;
     margin-top: 5px;
     text-transform: uppercase;
 }
@@ -3117,7 +3072,7 @@ div.tagsinput span.tag a {
 }
 
 .table-invoice thead {
-    background: #2a323f;
+    background: #999999;
     color: #fff;
 
 }
@@ -3125,7 +3080,7 @@ div.tagsinput span.tag a {
 .table-invoice th {
     border-bottom: none !important;
     padding: 20px 10px !important;
-    border-color: #2a323f !important;
+    border-color: #999999 !important;
 }
 
 .table-invoice th:first-child, .table-invoice td:first-child {
@@ -3137,14 +3092,14 @@ div.tagsinput span.tag a {
 }
 
 .table-invoice h4 {
-    color: #2a323f;
+    color: #999999;
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 5px 0;
 }
 
 .table-invoice strong {
-    color: #2a323f;
+    color: #999999;
 }
 
 .payment-method p {
@@ -3525,7 +3480,7 @@ h3.timeline-title {
 }
 
 .btn-post:hover {
-    background: #2a323f;
+    background: #999999;
     color:#fff
 }
 
@@ -3614,7 +3569,7 @@ ul.p-info .desk {
 }
 
 .p-states h3{
-    color: #2a323f;
+    color: #999999;
     font-size: 25px;
     margin: 10px 0 0 0;
 }
@@ -3660,7 +3615,7 @@ ul.activity-list .activity-desk {
 }
 
 ul.activity-list .activity-desk h5 {
-    color: #2a323f;
+    color: #999999;
 }
 
 ul.activity-list .activity-desk h5 a {

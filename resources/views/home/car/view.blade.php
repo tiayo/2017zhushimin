@@ -2,72 +2,164 @@
 
 @section('title', Auth::user()['name'].'的购物车')
 
-@section('class', 'shopping-cart')
+@section('style')
+    <style type="text/css">
+        .content {
+            width: 1000px;
+            margin: 50px auto;
+            padding: 10px 50px;
+            box-shadow: 1px 1px 5px #000;
+        }
+        .ct-title {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 20px;
+            box-shadow: 1px 1px 5px #000;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 80px;
+        }
+        .product {
+            position: relative;
+            float: left;
+            width: 480px;
+            height: 150px;
+            margin: 10px 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+        .product img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 5px;
+            margin: auto 0;
+            width: 135px;
+            height: 135px;
+        }
+        .product .pro-name {
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            position: absolute;
+            top: 8px;
+            left: 150px;
+            width: 320px;
+            height: 35px;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 35px;
+        }
+        .product .pro-guige {
+            position: absolute;
+            top: 45px;
+            left: 150px;
+            width: 320px;
+            height: 70px;
+            color: #999;
+        }
+        .product .pro-guige .gg {
+            float: left;
+            padding: 0 10px;
+        }
+        .product .pro-zz {
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            position: absolute;
+            top: 115px;
+            left: 150px;
+            width: 200px;
+            height: 25px;
+            color: #f00;
+            line-height: 25px;
+        }
+        .product .pro-del {
+            position: absolute;
+            top: 115px;
+            right: 40px;
+            width: 40px;
+            height: 25px;
+            color: #999;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+        }
+        .all-price {
+            height: 50px;
+            box-shadow: 1px 1px 5px #000;
+            font-size: 18px;
+            line-height: 50px;
+        }
+        .all-price span {
+            float: left;
+            height: 100%;
+            padding: 0 15px;
+            color: #f00;
+            font-weight: bold;
+        }
+        .all-price .jixugouwu {
+            float: right;
+            width: 150px;
+            height: 100%;
+            color: #000;
+            text-align: center;
+            box-shadow: 2px 2px #000 inset,
+            -2px -2px #000 inset;
+        }
+        .all-price .tijiao {
+            float: right;
+            width: 150px;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            outline: none;
+            border: 0;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+@endsection
 
 @section('body')
-    <div class="content clearfix">
-        <div class="shopping-cart-left">
-            <div class="cart-title clearfix">
-                <h1>您的购物袋 <span>共 {{ $count }} 件</span></h1>
-                <a href="/">继续购物</a>
+    @include('home.layouts.header')
+    <form class="shopping-cart">
+        <div class="content clearfix">
+            <div class="ct-title">
+                我的购物车
             </div>
-            <div class="cart-product-con">
-                <!-- <div class="cart-product-select-all clearfix">
-                    <div class="checkall">
-                        <span></span>全选
-                    </div>
-                    <p class="cart-selected-num">
-                        （已选中 <span>0</span> 件）
-                    </p>
-                </div> -->
-                <div class="cart-product-list">
-                    @foreach($lists as $list)
-                        @php
-                            $attributes = explode('|', $list['remark']);
-                            foreach ($attributes as $attribute) {
-                                $explode = explode(':', $attribute);
-                                $attr[$explode[0]] = $explode[1];
-                            }
-                        @endphp
-                        <div class="cart-product-info clearfix">
-                            <!-- <div class="check"></div> -->
-                            <img src="{{ $list->commodity->image_0 }}" class="cart-product-img"/>
-                            <div class="cart-product-details">
-                                <p>
-                                    <a href="{{ route('home.commodity_view', ['id' => $list['commidity_id']]) }}">{{ $list->commodity->name }}</a>
-                                    <span class="info-code">商品编号：{{ $list->commodity->id }}</span>
-                                </p>
-                                <div class="info-describe">
-                                    <p>颜色：<span>{{ $attr['color'] }}</span></p>
-                                    <p class="info-size">尺码：<span>{{ $attr['size'] }}</span></p>
-                                    <div class="info-price-num">
-                                        ￥<span class="price">{{ $list['price'] }}</span>x<em>{{ $list['num'] }}</em>
-                                    </div>
-                                </div>
-                                <div class="del-goods">
-                                    <div class="del-button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('home.car_destory', ['id' => $list['id']]) }}'">删除</div>
-                                    <div class="this-allprice">￥<span>@php echo $list['price'] * $list['num']  @endphp</span></div>
-                                </div>
+            <ul class="product-list clearfix">
+                @foreach($lists as $list)
+                    @php
+                        $attributes = explode('|', $list['remark']);
+                    @endphp
+                    <li class="product">
+                        <img src="{{ $list->commodity->image_0 ?? null }}"/>
+                        <div class="pro-name">{{ $list->commodity->name ?? '未找到' }}</div>
+                        <div class="pro-guige">
+                            @foreach($attributes as $attribute)
+                                @php
+                                    $attribute = explode(':', $attribute)
+                                @endphp
+                                <div class="gg">{{ $attribute[0] }}：<em>{{ $attribute[1] }}</em></div>
+                            @endforeach
+                                <div class="gg">数量：<em>{{ $list['num'] }}</em></div>
                         </div>
-                    </div>
-                    @endforeach
-                </div>
+                        <div class="pro-zz">合计：￥<em>{{ $list['price'] * $list['num'] }}</em></div>
+                        <div class="pro-del" onclick="location='{{ route('home.car_destory', ['commodity_id' => $list['commodity_id']]) }}'">删除</div>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="all-price">
+                <span>总价：￥<em>{{ $total_price }}</em></span>
+                <a href="/" class="jixugouwu">继续购物</a>
+                <button class="tijiao" onclick="location='{{ route('home.order_add') }}'">提交订单</button>
             </div>
         </div>
-        <div class="shopping-cart-right">
-            <div class="cart-order-summary clearfix">
-                <div class="cart-order-num">
-                    订单摘要：
-                    <span>共 <em>{{ $count }}</em> 件</span>
-                </div>
-                <div class="cart-total-price">
-                    <div class="product-total clearfix">
-                        <h1>商品总计</h1>
-                        <h2>￥<span>{{ $total_price }}</span>.00</h2>
-                    </div>
-                </div>
-                <a href="{{ route('home.order_add') }}" class="btn-gradient-blue">结算</a>
-            </div>
-        </div>
-    </div>
+    </form>
+    <script type="text/javascript">
+        $(".pro-del").click(function() {
+            $(this).parent().remove();
+        });
+    </script>
 @endsection

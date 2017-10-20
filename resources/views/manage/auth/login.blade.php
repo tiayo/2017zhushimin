@@ -24,9 +24,6 @@
 <div class="container">
 
     <div class="form-signin" action="index.html">
-        <div class="form-signin-heading text-center" style="color:#666;padding: 25px 15px 0">
-            <h3>商城系统</h3>
-        </div>
         <div class="login-wrap">
             <form method="post" action="{{ route('manage.login') }}">
                 {{ csrf_field() }}
@@ -43,13 +40,10 @@
                         </span>
                     </div>
                 </div>
-                <button class="btn btn-lg btn-login btn-block" type="submit">
-                    <i class="fa fa-check"></i>
+                <button style="width:100%; height:35px; line-height:30px;" type="submit">
+                    登录后台
                 </button>
             </form>
-            <div class="registration">
-                帐号须由管理员注册！
-            </div>
         </div>
     </div>
 

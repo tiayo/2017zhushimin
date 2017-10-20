@@ -1,184 +1,194 @@
 @extends('home.layouts.app')
 
 @section('title', $commodity['name'])
-@section('class', 'goods-details')
+
+@section('style')
+    <style type="text/css">
+        .content {
+            width: 1000px;
+            padding: 50px 0;
+            margin: 50px auto;
+            box-shadow: 1px 1px 5px #000;
+        }
+        .c-top {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+        .ct-l {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 190px;
+            margin: auto 0;
+            width: 360px;
+            height: 380px;
+            box-shadow: 1px 1px 5px #000;
+        }
+        .ctl-t {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 350px;
+            height: 300px;
+        }
+        .ctl-t img {
+            float: left;
+            width: 100%;
+            height: 100%;
+        }
+        .ctl-b {
+            overflow: hidden;
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 350px;
+            height: 65px;
+        }
+        .ctl-b img {
+            float: left;
+            width: 58px;
+            height: 58px;
+            margin-top: 2px;
+            margin-left: 8px;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+        .ctl-b .active {
+            border: 1px solid #000;
+        }
+        .ct-r {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 190px;
+            margin: auto 0;
+            padding: 15px;
+            width: 220px;
+            height: 350px;
+            box-shadow: 1px 1px 5px #000;
+        }
+        .ct-r .ctr-title {
+            margin-bottom: 20px;
+        }
+        .ct-r .ctr-title h1 {
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            font-size: 16px;
+            color: #888;
+            line-height: 18px;
+            margin-bottom: 7px;
+        }
+        .ct-r .ctr-title .ctr-price {
+            font-weight: bold;
+            font-size: 20px;
+            color: #000;
+            line-height: 20px;
+            font-weight: normal;
+        }
+        .ct-r .ctr-ys h1,
+        .ct-r .ctr-cm h1,
+        .ct-r .ctr-sl h1 {
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .ct-r .ctr-ys select,
+        .ct-r .ctr-cm select,
+        .ct-r .ctr-sl select {
+            float: left;
+            width: 100%;
+            height: 25px;
+            margin: 0 5px 5px 0;
+            outline: none;
+            border: 0;
+            box-shadow: 1px 1px 5px #000;
+            text-align: center;
+            line-height: 25px;
+        }
+        .ct-r .join-cart {
+            display: inline-block;
+            width: 100%;
+            height: 40px;
+            margin-top: 10px;
+            outline: none;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .c-bottom {
+            margin-top: 50px;
+            padding: 0 50px;
+        }
+    </style>
+@endsection
 
 @section('body')
-    <div class="content">
-        <div class="goods-show">
-            <div class="goods-show-con">
-                <div class="show-con-left">
-                    <div class="thumbnail">
-                        @for($i=1; $i<9; $i++)
-                            @if(!empty($commodity['image_'.$i]))
-                                <span @if ($i == 1) class="thumbnail-active"@endif>
-                                    <img src="{{ $commodity['image_'.$i] }}"/>
-                                </span>
-                            @endif
-                        @endfor
-                    </div>
-                    <div class="show-pic">
-                        <div class="show-pic-con">
-                            <img src="{{ $commodity['image_0'] }}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="show-con-right">
-                    <div class="goods-title">
-                        <h1>{{ $commodity->category->name }}</h1>
-                        <h2>{{ $commodity['name'] }}</h2>
-                        <span class="goods-price">￥{{ $commodity['price'] }}</span>
-                    </div>
-                    <form method="post" action="{{ route('home.car_add', ['commodity_id' => $commodity['id'] ]) }}">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="price" value="{{ $commodity['price'] }}">
-                        <div class="goods-color">
-                            <h3>颜色选择</h3>
-                            @foreach($attributes as $attribute)
-                                @if ($attribute['alias'] == 'color')
-                                    @foreach(explode(',', $attribute['value']) as $value)
-                                        <input name="color" type="radio" value="{{ $value }}"/>
-                                        {{ $value }}
-                                    @endforeach
-                                @endif
-                            @endforeach
-                        </div>
-                        <div class="goods-size">
-                            <div class="goods-size-title">尺码表</div>
-                            <div class="goods-size-choose clearfix">
-                                <select class="size-num" name="size" style="width: 100%">
-                                    <option value="" disabled selected>选择尺码</option>
-                                    @foreach($attributes as $attribute)
-                                        @if ($attribute['alias'] == 'size')
-                                            @foreach(explode(',', $attribute['value']) as $value)
-                                                <option value ="{{ $value }}">
-                                                    {{ $value }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-                                </select>
-                                <div class="prompting">请先选择尺码</div>
-                            </div>
-                        </div>
-                        <div class="goods-size">
-                            <div class="goods-size-title">购买数量</div>
-                            <div class="goods-size-choose clearfix">
-                                <select class="goods-num" name="num" style="float: left; width: 100%">
-                                    <option value ="1">1</option>
-                                    <option value ="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value ="4">4</option>
-                                    <option value ="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value ="7">7</option>
-                                    <option value ="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value ="10">10</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" style="border:none ;" class="join-shoppingCart">加入购物车</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="goods-introduce">
-            <div class="goods-introduce-con">
-                {!! $commodity['description'] !!}
-            </div>
-        </div>
-        <div class="guess-u-like clearfix">
-            <h1>猜你喜欢</h1>
-            <div class="u-like swiper-container">
-                <div class="swiper-wrapper">
-                    @foreach($rand_commodity as $rand)
-                        <div class="swiper-slide">
-                            <a href="{{ route('home.commodity_view', ['id' => $rand['id']]) }}">
-                                <img src="{{ $rand['image_0'] }}"/>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-    {{--<div class="shoppingCart-mask">--}}
-        {{--<div class="shoppingCart-mask-con">--}}
-            {{--<h1>成功加入购物袋 <span class="close"></span></h1>--}}
-            {{--<div class="mask-details clearfix">--}}
-                {{--<div class="mask-details-img">--}}
-                    {{--<img src="{{ $commodity['image_0'] }}"/>--}}
-                {{--</div>--}}
-                {{--<div class="mask-details-info">--}}
-                    {{--<h2>{{ $commodity->category->name }}</h2>--}}
-                    {{--<h3>{{ $commodity['name'] }}</h3>--}}
-                    {{--<p class="mask-price">￥{{ $commodity['price'] }}</p>--}}
-                    {{--<div class="goods-sku">--}}
-                        {{--<p>颜色：<span>深绿/石膏白/深绿</span></p>--}}
-                        {{--<p>尺码：<span>41</span></p>--}}
-                        {{--<p>数量：<span>10</span></p>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="mask-details-right">--}}
-                    {{--<p><span>5</span>件商品</p>--}}
-                    {{--<p>总计：<span>￥699</span></p>--}}
-                    {{--<a href="###" class="btn-check">查看购物袋</a>--}}
-                    {{--<a href="###" class="btn-clearing">立即结算</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-@endsection
-@section('script')
-<script type="text/javascript">
-    //缩略图
-    $(".thumbnail span").click(function() {
-        $(".thumbnail span").removeClass('thumbnail-active');
-        $(this).addClass('thumbnail-active');
-        var imgSrc = $(".thumbnail span").eq($(".thumbnail span").index(this)).children('img').attr('src');
-        $(".show-pic-con img").attr('src', imgSrc);
-    });
+       @include('home.layouts.header')
+       <form class="goods-details" method="post" action="{{ route('home.car_add', ['commodity_id' => $commodity['id']]) }}">
+           {{csrf_field() }}
+           <div class="content">
+               <div class="c-top">
+                   <div class="ct-l">
+                       <div class="ctl-t">
+                           <img src="{{ $commodity['image_0'] }}"/>
+                       </div>
+                       <div class="ctl-b">
+                           @for($i=0; $i<9; $i++)
+                               @if(!empty($commodity['image_'.$i]))
+                                   <img src="{{ $commodity['image_'.$i] }}" @if ($i == 0) class="active" @endif/>
+                               @endif
+                           @endfor
+                       </div>
+                   </div>
+                   <div class="ct-r">
+                       <div class="ctr-title">
+                           <h1>{{ $commodity['name'] }}</h1>
+                           <span class="ctr-price">￥{{ $commodity['price'] }}</span>
+                       </div>
 
-    //颜色选择
-    $(".goods-details .goods-show .goods-show-con .show-con-right .goods-color ul li").click(function() {
-        $(".goods-details .goods-show .goods-show-con .show-con-right .goods-color ul li").removeClass('active');
-        $(this).addClass('active');
-    });
+                       @foreach($attributes as $attribute)
+                           <div class="ctr-ys clearfix">
+                               <h1>{{ $attribute['name'] }}</h1>
+                               <select name="attribute[{{ $attribute['name'] }}]">
+                                   @foreach(explode(',', $attribute['value']) as $value)
+                                    <option value ="{{ $value }}">{{ $value }}</option>
+                                   @endforeach
+                               </select>
+                           </div>
+                       @endforeach
 
-    //猜你喜欢
-    var bigPic = $('.u-like').swiper({
-        pagination: '.u-like .swiper-pagination',
-        loop: true,
-        autoplay: 3000,
-        autoplayDisableOnInteraction: false,
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflow: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows : true
-        }
-    });
+                       <div class="ctr-sl clearfix">
+                           <h1>数量选择</h1>
+                           <select name="num">
+                               @for ($i=1; $i<=20; $i++)
+                                   <option value ="{{ $i }}">{{ $i }}</option>
+                               @endfor
+                           </select>
+                       </div>
 
-    //加入购物车
-//    $(".join-shoppingCart").click(function() {
-//        if($(".size-num").val() == null) {
-//            $(".prompting").show();
-//            $(".size-num").addClass('size-num-active');
-//        } else {
-//            $(".prompting").hide();
-//            $(".size-num").removeClass('size-num-active');
-//            $(".goods-details .shoppingCart-mask").show();
-//            $(".goods-details .shoppingCart-mask .shoppingCart-mask-con h1 .close").click(function() {
-//                $(".goods-details .shoppingCart-mask").hide();
-//            });
-//        }
-//    });
-</script>
+                       <button type="submit" class="join-cart">加入购物车</button>
+                   </div>
+               </div>
+               <div class="c-bottom">
+                   {!! $commodity['description'] !!}
+               </div>
+           </div>
+       </form>
+    <script type="text/javascript">
+        $(".ctl-b img").click(function() {
+            $(".ctl-b img").removeClass('active');
+            $(this).addClass('active');
+            var imgSrc = $(".ctl-b img").eq($(".ctl-b img").index(this)).attr('src');
+            console.log(imgSrc);
+            $(".ctl-t img").attr('src', imgSrc);
+        });
+    </script>
 @endsection

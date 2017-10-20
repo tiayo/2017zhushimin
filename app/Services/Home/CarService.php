@@ -2,6 +2,7 @@
 
 namespace App\Services\Home;
 
+use App\Commodity;
 use App\Repositories\CarRepository;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -108,11 +109,14 @@ class CarService
         $data['user_id'] = Auth::id();
         $data['commodity_id'] = $commodity_id;
         $data['num'] = $post['num'];
-        $data['price'] = $post['price'];
+        $data['price'] = Commodity::find($commodity_id)['price'];
 
         //写入属性
-        $data['remark'] = 'color:'.$post['color'].'|';
-        $data['remark'] .= 'size:'.$post['size'];
+        $data['remark'] = null;
+        foreach ($post['attribute'] as $key => $attribute) {
+            $data['remark'] .= $key.':'.$attribute.'|';
+        }
+        $data['remark'] = rtrim($data['remark'], '|');
 
         //执行插入
         return $this->car->create($data);

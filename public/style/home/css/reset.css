@@ -13,7 +13,5 @@ caption,th{text-align:left;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 input,button,textarea,select,optgroup,option{font-family:inherit; font-size:inherit;font-style:inherit;font-weight:inherit;}
 input,button,textarea,select{*font-size:100%;}
-input{border:0;outline:none;}
-b{font-weight: normal;}
 .clearfix {*zoom:1;}
 .clearfix:after {content:'\200B';clear:both;display:block;height:0px}
