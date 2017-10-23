@@ -70,4 +70,9 @@
             <a href="{{ route('home.register') }}" class="registration">还没有账号？点击注册</a>
         </div>
     </form>
+    <script>
+        @foreach($errors->all() as $error)
+        alert('{{ $error }}');
+        @endforeach
+    </script>
 @endsection
