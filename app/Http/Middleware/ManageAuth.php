@@ -21,6 +21,10 @@ class ManageAuth
             return redirect()->route('manage.login');
         }
 
+        if (!can('admin')) {
+            return redirect()->route('home.person');
+        }
+
         return $next($request);
     }
 }
