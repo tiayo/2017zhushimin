@@ -82,4 +82,9 @@
             <a href="{{ route('home.login') }}" class="registration">已经有账号？点击登录</a>
         </div>
     </form>
+    <script>
+        @foreach($errors->all() as $error)
+            alert('{{ $error }}');
+        @endforeach
+    </script>
 @endsection
