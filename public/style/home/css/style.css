@@ -47,7 +47,7 @@
 .search {
     position: relative;
     height: 150px;
-    border-bottom: 3px solid #f00;
+    border-bottom: 3px solid #000;
 }
 .search .logo {
     position: absolute;
@@ -61,10 +61,6 @@
     font-weight: bold;
     text-align: center;
     line-height: 100px;
-}
-.search .logo img {
-    float: left;
-    width: 100%;
 }
 .search .search-con {
     position: absolute;
@@ -81,19 +77,59 @@
     width: 503px;
     height: 38px;
     outline: none;
-    border: 1px solid #f00;
-    text-align: center;
+    border: 1px solid #000;
+    text-indent: 10px;
     line-height: 38px;
 }
 .search .search-con .search-button {
     display: inline-block;
     width: 90px;
     height: 40px;
-    background-color: #f00;
+    background-color: #000;
     color: #fff;
     outline: none;
     border: 0;
     cursor: pointer;
+}
+.search .index-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 1000px;
+    height: 40px;
+}
+.search .index-nav li {
+    float: left;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    background-color: #000;
+    border: 1px solid #000;
+}
+.search .index-nav li a {
+    float: left;
+    padding: 0 71px;
+    height: 100%;
+    color: #fff;
+}
+.search .index-nav li a:hover {
+    background-color: #fff;
+    color: #000;
+}
+.banner {
+    width: 1000px;
+    margin: 20px auto;
+}
+.banner .banner-right {
+    float: right;
+    width: 100%;
+}
+.banner .banner-right img {
+    float: left;
+    width: 100%;
+    height: 100%;
 }
 .goods {
     width: 1000px;

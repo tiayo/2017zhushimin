@@ -18,6 +18,17 @@
             <button class="search-button">搜索</button>
         </form>
     </div>
+    <ul class="index-nav">
+        @for($i=0; $i<=4; $i++)
+            @if (isset($parent_ctegory[$i]))
+                <li>
+                    <a href="{{ route('home.category_view', ['category_id' => $parent_ctegory[$i]['id']]) }}">
+                        {{ $parent_ctegory[$i]['name'] }}
+                    </a >
+                </li>
+            @endif
+        @endfor
+    </ul>
 </div>
 <div class="index-bigpic swiper-container clearfix">
     <div class="swiper-wrapper">
