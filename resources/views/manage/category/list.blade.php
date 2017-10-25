@@ -32,7 +32,7 @@
 		                <tr>
 		                    <th>ID</th>
 		                    <th>名称</th>
-		                    <th>父级</th>
+		                    <th>一级目录</th>
                             <th>添加时间</th>
 							<th>操作</th>
 		                </tr>
