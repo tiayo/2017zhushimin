@@ -31,12 +31,25 @@
         }
 
         .btn-info, .btn-warning, .btn-success, .btn-danger{
-            background-color: #666;
+            background-color: #000;
+            border: none;
+        }
+
+        .btn-info:hover, .btn-warning:hover, .btn-success:hover, .btn-danger:hover{
+            background: #333;
         }
 
         .form-control {
             border-radius: 0;
             border: none;
+        }
+
+        .table{
+            box-shadow: 1px 1px 5px #000, 1px 1px 5px #000;
+        }
+
+        .panel-body{
+            box-shadow: 1px 1px 5px #000, 1px 1px 5px #000;
         }
     </style>
 </head>
@@ -53,8 +66,8 @@
 
                 </li>
                 <li style="height: 44px; line-height: 44px;">
-                    <a href="#" class="btn" data-toggle="dropdown" style="color: #000">当前帐号:{{ Auth::guard()->user()['name'] }}</a>
-                    <a style="color: black;margin-top: 0.1em" class="btn" href="{{ route('manage.logout') }}">退出登录</a>
+                    <a href="#" class="btn" data-toggle="dropdown" style="color: #000;background: #fff">当前帐号:{{ Auth::guard()->user()['name'] }}</a>
+                    <a style="color: black;background: #fff" class="btn" href="{{ route('manage.logout') }}">退出登录</a>
                 </li>
 
             </ul>

@@ -27,7 +27,7 @@
             <header class="panel-heading">
                 分类列表
             </header>
-            	<table class="display table table-bordered table-striped dataTable">
+            	<table class="table table-bordered">
 		            <thead>
 		                <tr>
 		                    <th>ID</th>
