@@ -44,18 +44,6 @@
 @section('body')
     <div class="index">
         @include('home.layouts.header')
-        <div class="banner clearfix">
-            <ul class="banner-left">
-                @foreach($parent_ctegory as $cateogry)
-                    <li>
-                        <a href="{{ route('home.category_view', ['id' => $cateogry['id']]) }}">{{ $cateogry['name'] }}</a>
-                    </li>
-                @endforeach
-            </ul>
-            <div class="banner-right">
-                <img src="/style/home/images/bigpic4.jpg"/>
-            </div>
-        </div>
         <div class="goods">
             <h1>所有商品</h1>
             <ul class="goods-list clearfix">
