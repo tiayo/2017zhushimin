@@ -110,7 +110,7 @@
 }
 .search .index-nav li a {
     float: left;
-    padding: 0 81px;
+    width: 198px;
     height: 100%;
     color: #fff;
 }
