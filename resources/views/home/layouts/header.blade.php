@@ -34,19 +34,21 @@
         @endfor
     </ul>
 </div>
-<div class="index-bigpic swiper-container clearfix">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <a href="#"><img src="/style/home/images/bigpic1.jpg"/></a>
-        </div>
-        <div class="swiper-slide">
-            <a href="#"><img src="/style/home/images/bigpic2.jpg"/></a>
-        </div>
-        <div class="swiper-slide">
-            <a href="#"><img src="/style/home/images/bigpic3.jpg"/></a>
-        </div>
-        <div class="swiper-slide">
-            <a href="#"><img src="/style/home/images/bigpic4.jpg"/></a>
+<div class="banner clearfix">
+    <div class="index-bigpic banner-right swiper-container clearfix">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="#"><img src="/style/home/images/bigpic1.jpg"/></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="/style/home/images/bigpic2.jpg"/></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="/style/home/images/bigpic3.jpg"/></a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#"><img src="/style/home/images/bigpic4.jpg"/></a>
+            </div>
         </div>
     </div>
 </div>
