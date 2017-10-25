@@ -288,10 +288,11 @@ hr {
 }
 
 .custom-nav > li > a {
-    color: #000;
+    color: #fff;
     padding: 12px 20px;
     border-radius: 0;
     -webkit-border-radius: 0;
+    background: url(/style/home/images/base.png) repeat-x;
 }
 
 .custom-nav > li > a:hover,

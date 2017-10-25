@@ -27,7 +27,7 @@
             <header class="panel-heading">
                 服务列表
             </header>
-            	<table class="table table-striped table-hover">
+            	<table class="display table table-bordered table-striped dataTable">
 		            <thead>
 		                <tr>
 		                    <th>ID</th>

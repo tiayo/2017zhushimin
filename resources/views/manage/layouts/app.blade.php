@@ -25,6 +25,20 @@
   <script src="{{ asset('/static/adminex/js/html5shiv.js') }}"></script>
   <script src="{{ asset('/static/adminex/js/respond.min.js') }}"></script>
   <![endif]-->
+    <style>
+        .panel{
+            background-color: #f1f1f1;
+        }
+
+        .btn-info, .btn-warning, .btn-success, .btn-danger{
+            background-color: #666;
+        }
+
+        .form-control {
+            border-radius: 0;
+            border: none;
+        }
+    </style>
 </head>
 
 <body class="sticky-header">
