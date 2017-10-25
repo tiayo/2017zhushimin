@@ -1,3 +1,4 @@
+@inject('index', 'App\Services\Home\IndexService')
 <div class="header">
     <div class="header-con">
         @if (Auth::check())
@@ -19,6 +20,9 @@
         </form>
     </div>
     <ul class="index-nav">
+        @php
+            $parent_ctegory = $index->getCategoryParent();
+        @endphp
         @for($i=0; $i<=4; $i++)
             @if (isset($parent_ctegory[$i]))
                 <li>
